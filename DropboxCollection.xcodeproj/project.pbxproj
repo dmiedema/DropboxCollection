@@ -60,6 +60,7 @@
 		BEBAEF3315DB5B92000E64AB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BEBAEF3515DB5B98000E64AB /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
 		BEBAEF3715DB5BAA000E64AB /* DropboxSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DropboxSDK.framework; path = "dropbox-ios-sdk-1.2.3/DropboxSDK.framework"; sourceTree = "<group>"; };
+		C3A6361915DB721800DCE58C /* DropboxAPIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropboxAPIKey.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +128,7 @@
 		BEBAEF0315DB527D000E64AB /* DropboxCollection */ = {
 			isa = PBXGroup;
 			children = (
+				C3A6361915DB721800DCE58C /* DropboxAPIKey.h */,
 				BEBAEF0C15DB527D000E64AB /* AppDelegate.h */,
 				BEBAEF0D15DB527D000E64AB /* AppDelegate.m */,
 				BEBAEF2C15DB556D000E64AB /* main.storyboard */,

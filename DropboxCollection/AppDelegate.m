@@ -8,9 +8,9 @@
 
 #import <DropboxSDK/DropboxSDK.h>
 #import "AppDelegate.h"
+#import "DropboxAPIKey.h"
 
-#define DB_APP_KEY @"am1b7b0nkux3g30"
-#define DB_APP_SECRET @"opp3cb7tfaacuut"
+
 
 @implementation AppDelegate
 
