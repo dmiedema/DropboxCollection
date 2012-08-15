@@ -2,7 +2,7 @@
 
 Let's recap. We've set up our environment and we've learned how to set up a session. Now we are going to see how to use the API to list, upload and download files in your Dropbox folder.
 
-The DBRestClient class is the way to access Dropbox from your app once the user has linked his account. The simplest way to use `DBRestClient` from an object is to add an instance variable in the .h file of your class:
+The `DBRestClient` class is the way to access Dropbox from your app once the user has linked his account. The simplest way to use `DBRestClient` from an object is to add an instance variable in the .h file of your class:
 
 	DBRestClient *restClient;
 Next, let's create a getter method to allocate and initialize the instance variable in the .m file:
