@@ -12,3 +12,8 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #endif
+
+
+// Ryan key shit
+#define DB_APP_KEY @"am1b7b0nkux3g30"
+#define DB_APP_SECRET @"opp3cb7tfaacuut"

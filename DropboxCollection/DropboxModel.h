@@ -7,7 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <DropboxSDK/DropboxSDK.h>
 
-@interface DropboxModel : NSObject <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface DropboxModel : NSObject
+
++ (DropboxModel *) sharedInstance;
+
+- (DBMetadata *) metaDataForItemAtIndex:(NSUInteger)index;
+- (void) jumpBackToDirectoryAtIndex:(NSUInteger)index;
+- (void) loadMetadataForPath:(NSString *)path;
+- (void) loadFile:(NSString *)dropboxPath intoPath:(NSString *)destinationPath;
+
+@property (nonatomic, strong) NSMutableArray * activeDirectories;
+@property (nonatomic, strong) NSString * filePath;
 
 @end

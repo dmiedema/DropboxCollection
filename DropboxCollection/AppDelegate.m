@@ -8,6 +8,7 @@
 
 #import <DropboxSDK/DropboxSDK.h>
 #import "AppDelegate.h"
+#import "DropboxModel.h"
 #import "DropboxAPIKey.h"
 
 
@@ -17,18 +18,19 @@
 - (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"main" bundle:nil];
-    UIViewController * root = [storyboard instantiateInitialViewController];
-    
     DBSession * session = [[DBSession alloc] initWithAppKey:DB_APP_KEY appSecret:DB_APP_SECRET root:kDBRootDropbox];
     [DBSession setSharedSession:session];
+    
+    UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"main" bundle:nil];
+    UIViewController * root = [storyboard instantiateInitialViewController];
     
     if (![[DBSession sharedSession] isLinked]) {
         [[DBSession sharedSession] linkFromController:root];
     }
     
-    [self.window setRootViewController:root];
+    [[DropboxModel sharedInstance] loadMetadataForPath:@"/"];
     
+    [self.window setRootViewController:root];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
