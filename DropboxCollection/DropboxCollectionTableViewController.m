@@ -61,10 +61,11 @@
 #pragma mark - QuicklookPreviewControllerDataSource Methods
 
 - (NSInteger) numberOfPreviewItemsInPreviewController:(QLPreviewController *)controller {
-    
+    // this is a bad idea.
+    return 1;
 }
 - (id<QLPreviewItem>) previewController:(QLPreviewController *)controller previewItemAtIndex:(NSInteger)index {
-    
+    return nil;
 }
 
 #pragma mark - Table view data source
