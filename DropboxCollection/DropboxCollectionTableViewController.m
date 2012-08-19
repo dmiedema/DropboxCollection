@@ -49,6 +49,9 @@
         NSLog(@"Change observed in [[DropboxModel sharedInstance] filePath]");
         // somehow make this work
         [_dropboxQuicklookController setPreviewItemURL:[NSURL fileURLWithPath:[[DropboxModel sharedInstance] filePath]]];
+        NSLog(@"Current/new _dropboxQuicklookController previewItemURL: %@", [_dropboxQuicklookController previewItemURL]);
+        [[_dropboxQuicklookController view] setNeedsDisplay];
+        [popoverController setContentViewController:_dropboxQuicklookController animated:YES];
     }
 }
 
@@ -123,7 +126,7 @@
         //        //- (void)presentPopoverFromRect:(CGRect)rect inView:(UIView *)view permittedArrowDirections:(UIPopoverArrowDirection)arrowDirections animated:(BOOL)animated
         //        [_popoverController presentPopoverFromRect:[[self collectionView] bounds] inView:[self collectionView] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
         // changed the presentPopoverFromRect to pull in the tableViews superview to hopefully take up the entire screen.
-        [popoverController presentPopoverFromRect:[[[self view] superview] bounds] inView:[self view] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        [popoverController presentPopoverFromRect:[[[self view] superview] bounds] inView:[[self view] superview] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
         
     }
 }
