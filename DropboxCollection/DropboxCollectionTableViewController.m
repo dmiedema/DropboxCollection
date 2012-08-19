@@ -11,7 +11,7 @@
 #import "DropboxCollectionViewController.h"
 #import "DropboxQuicklookPreviewController.h"
 
-@interface DropboxCollectionTableViewController ()
+@interface DropboxCollectionTableViewController () <QLPreviewControllerDataSource>
 
 @property (nonatomic, strong) DropboxQuicklookPreviewController *dropboxQuicklookController;
 @property (nonatomic, strong) NSString *urlPathOfQuicklookItemAsString;
@@ -52,12 +52,19 @@
         NSLog(@"Change observed in [[DropboxModel sharedInstance] filePath]");
         NSLog(@"[[DropboxModel shareInstance] filePath] changed to : %@", [[DropboxModel sharedInstance] filePath]);
         // somehow make this work
-        [_dropboxQuicklookController setPreviewItemURL:[NSURL fileURLWithPath:[[DropboxModel sharedInstance] filePath]]];
-        NSLog(@"Current/new _dropboxQuicklookController previewItemURL: %@", [_dropboxQuicklookController previewItemURL]);
-        [[_dropboxQuicklookController view] setNeedsDisplay];
-        [popoverController presentPopoverFromRect:[[[self view] superview] bounds] inView:[[self view] superview] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-        NSLog(@"\n\n\n");
+        _quicklookPreviewController = [[QLPreviewController alloc] init];
+        [_quicklookPreviewController setDataSource:self];
+        
     }
+}
+
+#pragma mark - QuicklookPreviewControllerDataSource Methods
+
+- (NSInteger) numberOfPreviewItemsInPreviewController:(QLPreviewController *)controller {
+    
+}
+- (id<QLPreviewItem>) previewController:(QLPreviewController *)controller previewItemAtIndex:(NSInteger)index {
+    
 }
 
 #pragma mark - Table view data source
