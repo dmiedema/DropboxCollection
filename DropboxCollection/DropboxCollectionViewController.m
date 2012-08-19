@@ -24,7 +24,6 @@
 @property (nonatomic, strong) NSArray *file;
 @property (nonatomic, strong) NSMutableArray * tableViewControllers;
 @property (nonatomic) BOOL autoscrolled;
-@property (nonatomic, strong) UIPopoverController *popoverController;
 
 - (void) clearExistingDirectories;
 - (void) animateScrollingToIndexPath:(NSIndexPath *)indexPath;
@@ -34,7 +33,6 @@
 @implementation DropboxCollectionViewController
 
 @synthesize previewItemURL = _previewItemURL;
-@synthesize popoverController; // had to manually synthesize to avoid an error, it doesn't like _popoverController
 
 
 - (NSURL *)previewItemURL {
@@ -122,9 +120,18 @@
     }
     
     if ([keyPath isEqualToString:@"filePath"]) {
+        // This has been moved to CollectionViewController
+        NSLog(@"KeyValue: filePath -- change observed");
         /* segue */
-        NSLog(@"Was told to segue");
-        [self performSegueWithIdentifier:@"quicklookPopOverSegue" sender:self];
+        
+//        NSLog(@"Was told to segue");
+//        [self performSegueWithIdentifier:@"quicklookPopOverSegue" sender:self];
+        
+        /***************************************************/
+        /* since segue isn't working I'm thinking I'm going to manually create a UIPopoverController
+            and load the quicklook view that way. or at least figure out how to do that because
+            this whole segue thing isn't working.
+         */
     }
 }
 

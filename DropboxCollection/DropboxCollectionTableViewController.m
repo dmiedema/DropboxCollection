@@ -13,15 +13,26 @@
 
 @interface DropboxCollectionTableViewController ()
 
+@property (nonatomic, strong) DropboxQuicklookPreviewController *dropboxQuicklookController;
+@property (nonatomic, strong) UIPopoverController *popoverController;
+@property (nonatomic, strong) NSString *urlPathOfQuicklookItemAsString;
+
 - (NSArray *) dropboxDirectoryContents;
 
 @end
 
 @implementation DropboxCollectionTableViewController
 
+@synthesize popoverController;
+
 - (void) viewDidLoad {
     [super viewDidLoad];
     [[self tableView] registerNib:[UINib nibWithNibName:@"DBCTableView" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"DBMetadataCell"];
+    
+    [[DropboxModel sharedInstance] addObserver:self
+                                    forKeyPath:@"filePath"
+                                       options:NSKeyValueObservingOptionNew
+                                       context:nil];
 }
 
 - (NSArray *) dropboxDirectoryContents {
@@ -30,6 +41,15 @@
 
 - (void) didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+#pragma mark - KeyValue Method
+- (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"filePath"]) {
+        NSLog(@"Change observed in [[DropboxModel sharedInstance] filePath]");
+        // somehow make this work
+        [_dropboxQuicklookController setPreviewItemURL:[NSURL fileURLWithPath:[[DropboxModel sharedInstance] filePath]]];
+    }
 }
 
 #pragma mark - Table view data source
@@ -79,10 +99,32 @@
     if (selectionMetadata.isDirectory) {
         [[DropboxModel sharedInstance] loadMetadataForPath:[selectionMetadata path]];
     } else {
-//        NSArray * searchPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//        NSString * documentsDirectory = [searchPaths objectAtIndex:0];
-//        NSString * destPath = [NSString stringWithFormat:@"%@/%@", documentsDirectory, [selectionMetadata filename]];
-//        [[DropboxModel sharedInstance] loadFile:[selectionMetadata path] intoPath:destPath];
+        NSArray * searchPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString * documentsDirectory = [searchPaths objectAtIndex:0];
+        NSString * destPath = [NSString stringWithFormat:@"%@/%@", documentsDirectory, [selectionMetadata filename]];
+        [[DropboxModel sharedInstance] loadFile:[selectionMetadata path] intoPath:destPath];
+        
+        // Create the PopoverController
+            // i think this might not have anything in the URL i'm loading yet, but when it is actually downloaded
+            // to the location the popover doesnt update
+            //
+            // -- Potential way to fix it --
+            // set up KeyValueObserving of the filePath just like what was done in
+            // DropboxCollectionViewController to update when there is something in there
+            // and while there hasnt been an update it might be beneficial to
+            // set [_dropboxQuicklookController setPreviewItemURL:] to nil
+            // and then once the KeyValue is observed update
+            // [_dropboxQuicklookController setPreviewItemURL:] to the new
+            // observed fileURLWithPath:destPath
+        
+        _dropboxQuicklookController = [[DropboxQuicklookPreviewController alloc] init];
+        [_dropboxQuicklookController setPreviewItemURL:nil];
+        popoverController = [[UIPopoverController alloc] initWithContentViewController:_dropboxQuicklookController];
+        //        //- (void)presentPopoverFromRect:(CGRect)rect inView:(UIView *)view permittedArrowDirections:(UIPopoverArrowDirection)arrowDirections animated:(BOOL)animated
+        //        [_popoverController presentPopoverFromRect:[[self collectionView] bounds] inView:[self collectionView] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        // changed the presentPopoverFromRect to pull in the tableViews superview to hopefully take up the entire screen.
+        [popoverController presentPopoverFromRect:[[[self view] superview] bounds] inView:[self view] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        
     }
 }
 
