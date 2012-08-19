@@ -14,8 +14,11 @@
 @interface DropboxCollectionTableViewController ()
 
 @property (nonatomic, strong) DropboxQuicklookPreviewController *dropboxQuicklookController;
-@property (nonatomic, strong) UIPopoverController *popoverController;
 @property (nonatomic, strong) NSString *urlPathOfQuicklookItemAsString;
+/* View Controller shit - Attempts and things to get this shit to work */
+@property (nonatomic, strong) UIViewController *viewController;
+@property (nonatomic, strong) UIPopoverController *popoverController;
+@property (nonatomic, strong) QLPreviewController *quicklookPreviewController;
 
 - (NSArray *) dropboxDirectoryContents;
 
@@ -52,7 +55,8 @@
         [_dropboxQuicklookController setPreviewItemURL:[NSURL fileURLWithPath:[[DropboxModel sharedInstance] filePath]]];
         NSLog(@"Current/new _dropboxQuicklookController previewItemURL: %@", [_dropboxQuicklookController previewItemURL]);
         [[_dropboxQuicklookController view] setNeedsDisplay];
-        [popoverController setContentViewController:_dropboxQuicklookController animated:YES];
+        [popoverController presentPopoverFromRect:[[[self view] superview] bounds] inView:[[self view] superview] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        NSLog(@"\n\n\n");
     }
 }
 
@@ -127,7 +131,7 @@
         //        //- (void)presentPopoverFromRect:(CGRect)rect inView:(UIView *)view permittedArrowDirections:(UIPopoverArrowDirection)arrowDirections animated:(BOOL)animated
         //        [_popoverController presentPopoverFromRect:[[self collectionView] bounds] inView:[self collectionView] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
         // changed the presentPopoverFromRect to pull in the tableViews superview to hopefully take up the entire screen.
-        [popoverController presentPopoverFromRect:[[[self view] superview] bounds] inView:[[self view] superview] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+//        [popoverController presentPopoverFromRect:[[[self view] superview] bounds] inView:[[self view] superview] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
         
     }
 }

@@ -150,7 +150,6 @@
 				C339FA8E15DC06C700789506 /* DropboxCollectionTableViewController.h */,
 				C339FA8F15DC06C700789506 /* DropboxCollectionTableViewController.m */,
 				BEBAEF0415DB527D000E64AB /* Supporting Files */,
-				BEEB420F15DECAED00D81E04 /* DBCTableView.xib */,
 			);
 			path = DropboxCollection;
 			sourceTree = "<group>";
@@ -158,6 +157,7 @@
 		BEBAEF0415DB527D000E64AB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BEEB420F15DECAED00D81E04 /* DBCTableView.xib */,
 				BEBAEF0515DB527D000E64AB /* DropboxCollection-Info.plist */,
 				BEBAEF0615DB527D000E64AB /* InfoPlist.strings */,
 				BEBAEF0915DB527D000E64AB /* main.m */,
