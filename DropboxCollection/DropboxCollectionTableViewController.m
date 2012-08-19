@@ -47,6 +47,7 @@
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([keyPath isEqualToString:@"filePath"]) {
         NSLog(@"Change observed in [[DropboxModel sharedInstance] filePath]");
+        NSLog(@"[[DropboxModel shareInstance] filePath] changed to : %@", [[DropboxModel sharedInstance] filePath]);
         // somehow make this work
         [_dropboxQuicklookController setPreviewItemURL:[NSURL fileURLWithPath:[[DropboxModel sharedInstance] filePath]]];
         NSLog(@"Current/new _dropboxQuicklookController previewItemURL: %@", [_dropboxQuicklookController previewItemURL]);
