@@ -88,15 +88,6 @@
     NSMutableArray * hackArray = [[NSMutableArray alloc] initWithArray:[self activeDirectories]];
     [hackArray addObject:metadata];
     [self setActiveDirectories:hackArray];
-//    
-//    if (metadata.isDirectory) {
-//        // its a damn directory
-//        NSLog(@"Folder '%@' contains:", metadata.path);
-//
-//        for (DBMetadata * item in metadata.contents) {
-//            NSLog(@"    %@", item.filename);
-//        }
-//    }
 }
 
 - (void) restClient:(DBRestClient *)client loadFileFailedWithError:(NSError *)error {

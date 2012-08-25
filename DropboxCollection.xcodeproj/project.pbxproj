@@ -28,6 +28,7 @@
 		C339FA8815DBF0C500789506 /* DropboxCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C339FA8715DBF0C500789506 /* DropboxCollectionViewController.m */; };
 		C339FA9015DC06C700789506 /* DropboxCollectionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C339FA8F15DC06C700789506 /* DropboxCollectionTableViewController.m */; };
 		C38401C115DD89EB0069D366 /* DropboxQuicklookPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C38401C015DD89EB0069D366 /* DropboxQuicklookPreviewController.m */; };
+		C3DC503D15E4A8C300D03C59 /* Quicklook notes shit.rtf in Resources */ = {isa = PBXBuildFile; fileRef = C3DC503C15E4A8C300D03C59 /* Quicklook notes shit.rtf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		C339FA8F15DC06C700789506 /* DropboxCollectionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropboxCollectionTableViewController.m; sourceTree = "<group>"; };
 		C38401BF15DD89EB0069D366 /* DropboxQuicklookPreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropboxQuicklookPreviewController.h; sourceTree = "<group>"; };
 		C38401C015DD89EB0069D366 /* DropboxQuicklookPreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropboxQuicklookPreviewController.m; sourceTree = "<group>"; };
+		C3DC503C15E4A8C300D03C59 /* Quicklook notes shit.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "Quicklook notes shit.rtf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 				BEBAEF2F15DB5B41000E64AB /* DropboxModel.m */,
 				C339FA8615DBF0C500789506 /* DropboxCollectionViewController.h */,
 				C339FA8715DBF0C500789506 /* DropboxCollectionViewController.m */,
+				C3DC503C15E4A8C300D03C59 /* Quicklook notes shit.rtf */,
 				C339FA8E15DC06C700789506 /* DropboxCollectionTableViewController.h */,
 				C339FA8F15DC06C700789506 /* DropboxCollectionTableViewController.m */,
 				BEBAEF0415DB527D000E64AB /* Supporting Files */,
@@ -259,6 +262,7 @@
 				BEBAEF0815DB527D000E64AB /* InfoPlist.strings in Resources */,
 				BEBAEF2D15DB556D000E64AB /* main.storyboard in Resources */,
 				BEEB421015DECAED00D81E04 /* DBCTableView.xib in Resources */,
+				C3DC503D15E4A8C300D03C59 /* Quicklook notes shit.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

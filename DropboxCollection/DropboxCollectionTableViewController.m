@@ -52,9 +52,12 @@
         NSLog(@"Change observed in [[DropboxModel sharedInstance] filePath]");
         NSLog(@"[[DropboxModel shareInstance] filePath] changed to : %@", [[DropboxModel sharedInstance] filePath]);
         // somehow make this work
-        _quicklookPreviewController = [[QLPreviewController alloc] init];
-        [_quicklookPreviewController setDataSource:self];
-        
+        // set up quicklook controller
+        [_quicklookPreviewController setDataSource:[NSURL fileURLWithPath:[[DropboxModel sharedInstance] filePath]]];
+        // set modal display property
+        [_quicklookPreviewController setModalPresentationStyle:UIModalPresentationPageSheet];
+        [_quicklookPreviewController setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+        // PRESENT!
     }
 }
 
@@ -65,7 +68,7 @@
     return 1;
 }
 - (id<QLPreviewItem>) previewController:(QLPreviewController *)controller previewItemAtIndex:(NSInteger)index {
-    return nil;
+    return [NSURL fileURLWithPath:[[DropboxModel sharedInstance] filePath]];
 }
 
 #pragma mark - Table view data source
@@ -118,6 +121,11 @@
         NSArray * searchPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString * documentsDirectory = [searchPaths objectAtIndex:0];
         NSString * destPath = [NSString stringWithFormat:@"%@/%@", documentsDirectory, [selectionMetadata filename]];
+        
+        // Set up quicklook controller and set datasource to nil before we load the item from the DropboxModel
+        _quicklookPreviewController = [[QLPreviewController alloc] init];
+        [_quicklookPreviewController setDataSource:nil];
+        // not sure if its a good idea or what but fuck it, trying it.q
         [[DropboxModel sharedInstance] loadFile:[selectionMetadata path] intoPath:destPath];
         
         // Create the PopoverController
@@ -135,7 +143,15 @@
         
         _dropboxQuicklookController = [[DropboxQuicklookPreviewController alloc] init];
         [_dropboxQuicklookController setPreviewItemURL:nil];
-        popoverController = [[UIPopoverController alloc] initWithContentViewController:_dropboxQuicklookController];
+        //popoverController = [[UIPopoverController alloc] initWithContentViewController:_dropboxQuicklookController];
+        
+        /* code ripped from http://developer.apple.com/library/ios/#featuredarticles/ViewControllerPGforiPhoneOS/ModalViewControllers/ModalViewControllers.html */
+        UINavigationController *navigationController = [[UINavigationController alloc]
+                                                        initWithRootViewController:_quicklookPreviewController];
+        [self presentViewController:navigationController animated:YES completion: nil];
+        
+        
+        
         //        //- (void)presentPopoverFromRect:(CGRect)rect inView:(UIView *)view permittedArrowDirections:(UIPopoverArrowDirection)arrowDirections animated:(BOOL)animated
         //        [_popoverController presentPopoverFromRect:[[self collectionView] bounds] inView:[self collectionView] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
         // changed the presentPopoverFromRect to pull in the tableViews superview to hopefully take up the entire screen.

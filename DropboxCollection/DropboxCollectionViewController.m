@@ -178,7 +178,7 @@
     return 1;
 }
 
-#pragma mark - UICOllectionViewDelegate
+#pragma mark - UICollectionViewDelegate
 
 - (BOOL) collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     return NO;
@@ -198,6 +198,17 @@
         //[[segue destinationViewController] setDelegate:self];
         //[[segue destinationViewController] setDataSource:[[self tableViewControllers] lastObject]];
         [[segue destinationViewController] setPreviewItemURL:[[self file] lastObject]];
+        /*
+            Might be useful..?
+                 NSIndexPath *indexPath = nil;
+                 if ([sender isKindOfClass:[NSIndexPath class]]) {
+                     indexPath = (NSIndexPath *)sender;
+                 } else if ([sender isKindOfClass:[UITableViewCell class]]) {
+                     indexPath = [self.tableView indexPathForCell:sender];
+                 } else if (!sender || (sender == self) || (sender == self.tableView)) {
+                     indexPath = [self.tableView indexPathForSelectedRow];
+                 }
+         */
     }
 }
 
