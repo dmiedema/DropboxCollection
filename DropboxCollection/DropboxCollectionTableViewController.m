@@ -19,6 +19,7 @@
 @property (nonatomic, strong) UIViewController *viewController;
 @property (nonatomic, strong) UIPopoverController *popoverController;
 @property (nonatomic, strong) QLPreviewController *quicklookPreviewController;
+@property (nonatomic, strong) NSURL *urlOfDropboxFile;
 
 - (NSArray *) dropboxDirectoryContents;
 
@@ -53,13 +54,15 @@
         NSLog(@"[[DropboxModel shareInstance] filePath] changed to : %@", [[DropboxModel sharedInstance] filePath]);
         // somehow make this work
         // set up quicklook controller
-        [_quicklookPreviewController setDataSource:[NSURL fileURLWithPath:[[DropboxModel sharedInstance] filePath]]];
+        //[_quicklookPreviewController setDataSource:[NSURL fileURLWithPath:[[DropboxModel sharedInstance] filePath]]];
+        
+        _urlOfDropboxFile = [NSURL fileURLWithPath:[[DropboxModel sharedInstance] filePath]];
+
         // set modal display property
         [_quicklookPreviewController setModalPresentationStyle:UIModalPresentationPageSheet];
         [_quicklookPreviewController setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
         // PRESENT!
-        
-        [self presentViewController:_quicklookPreviewController animated:YES completion:nil];
+        [_quicklookPreviewController refreshCurrentPreviewItem];
         NSLog(@"currentPreviewItem : %@", [_quicklookPreviewController currentPreviewItem]);
     }
 }
@@ -126,9 +129,12 @@
         NSString * destPath = [NSString stringWithFormat:@"%@/%@", documentsDirectory, [selectionMetadata filename]];
         
         // Set up quicklook controller and set datasource to nil before we load the item from the DropboxModel
+        //[self quicklookPreviewController] = [[QLPreviewController alloc] init];
         _quicklookPreviewController = [[QLPreviewController alloc] init];
-        [_quicklookPreviewController setDataSource:nil];
-        
+        //[_quicklookPreviewController setDataSource:nil];
+        _urlOfDropboxFile = nil;
+        [_quicklookPreviewController setDataSource:_urlOfDropboxFile];
+
         // not sure if its a good idea or what but fuck it, trying it.
         [[DropboxModel sharedInstance] loadFile:[selectionMetadata path] intoPath:destPath];
                 
