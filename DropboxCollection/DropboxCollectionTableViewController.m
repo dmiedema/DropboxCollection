@@ -57,7 +57,7 @@
         //[_quicklookPreviewController setDataSource:[NSURL fileURLWithPath:[[DropboxModel sharedInstance] filePath]]];
         
         _urlOfDropboxFile = [NSURL fileURLWithPath:[[DropboxModel sharedInstance] filePath]];
-
+        
         // set modal display property
         [_quicklookPreviewController setModalPresentationStyle:UIModalPresentationPageSheet];
         [_quicklookPreviewController setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
@@ -74,7 +74,7 @@
     return 1;
 }
 - (id<QLPreviewItem>) previewController:(QLPreviewController *)controller previewItemAtIndex:(NSInteger)index {
-    return [NSURL fileURLWithPath:[[DropboxModel sharedInstance] filePath]];
+    return _urlOfDropboxFile;
 }
 
 #pragma mark - Table view data source
@@ -133,7 +133,7 @@
         _quicklookPreviewController = [[QLPreviewController alloc] init];
         //[_quicklookPreviewController setDataSource:nil];
         _urlOfDropboxFile = nil;
-        [_quicklookPreviewController setDataSource:_urlOfDropboxFile];
+        [_quicklookPreviewController setDataSource:self];
 
         // not sure if its a good idea or what but fuck it, trying it.
         [[DropboxModel sharedInstance] loadFile:[selectionMetadata path] intoPath:destPath];
