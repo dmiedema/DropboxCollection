@@ -146,9 +146,10 @@
         //popoverController = [[UIPopoverController alloc] initWithContentViewController:_dropboxQuicklookController];
         
         /* code ripped from http://developer.apple.com/library/ios/#featuredarticles/ViewControllerPGforiPhoneOS/ModalViewControllers/ModalViewControllers.html */
-        UINavigationController *navigationController = [[UINavigationController alloc]
-                                                        initWithRootViewController:_quicklookPreviewController];
-        [self presentViewController:navigationController animated:YES completion: nil];
+//        UINavigationController *navigationController = [[UINavigationController alloc]
+//                                                        initWithRootViewController:_quicklookPreviewController];
+//        [self presentViewController:navigationController animated:YES completion: nil];
+        [self presentViewController:_quicklookPreviewController animated:YES completion:nil];
         
         
         
