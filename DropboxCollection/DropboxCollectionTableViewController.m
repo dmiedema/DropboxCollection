@@ -16,8 +16,6 @@
 @property (nonatomic, strong) DropboxQuicklookPreviewController *dropboxQuicklookController;
 @property (nonatomic, strong) NSString *urlPathOfQuicklookItemAsString;
 /* View Controller shit - Attempts and things to get this shit to work */
-@property (nonatomic, strong) UIViewController *viewController;
-@property (nonatomic, strong) UIPopoverController *popoverController;
 @property (nonatomic, strong) QLPreviewController *quicklookPreviewController;
 @property (nonatomic, strong) NSURL *urlOfDropboxFile;
 
@@ -26,8 +24,6 @@
 @end
 
 @implementation DropboxCollectionTableViewController
-
-@synthesize popoverController;
 
 - (void) viewDidLoad {
     [super viewDidLoad];
@@ -129,42 +125,19 @@
         NSString * destPath = [NSString stringWithFormat:@"%@/%@", documentsDirectory, [selectionMetadata filename]];
         
         // Set up quicklook controller and set datasource to nil before we load the item from the DropboxModel
-        //[self quicklookPreviewController] = [[QLPreviewController alloc] init];
         _quicklookPreviewController = [[QLPreviewController alloc] init];
-        //[_quicklookPreviewController setDataSource:nil];
+        
         _urlOfDropboxFile = nil;
         [_quicklookPreviewController setDataSource:self];
 
         // not sure if its a good idea or what but fuck it, trying it.
         [[DropboxModel sharedInstance] loadFile:[selectionMetadata path] intoPath:destPath];
-                
-        
-        // Create the PopoverController
-            // i think this might not have anything in the URL i'm loading yet, but when it is actually downloaded
-            // to the location the popover doesnt update
-            //
-            // -- Potential way to fix it --
-            // set up KeyValueObserving of the filePath just like what was done in
-            // DropboxCollectionViewController to update when there is something in there
-            // and while there hasnt been an update it might be beneficial to
-            // set [_dropboxQuicklookController setPreviewItemURL:] to nil
-            // and then once the KeyValue is observed update
-            // [_dropboxQuicklookController setPreviewItemURL:] to the new
-            // observed fileURLWithPath:destPath
-                
+
         /* code ripped from http://developer.apple.com/library/ios/#featuredarticles/ViewControllerPGforiPhoneOS/ModalViewControllers/ModalViewControllers.html */
 //        UINavigationController *navigationController = [[UINavigationController alloc]
 //                                                        initWithRootViewController:_quicklookPreviewController];
 //        [self presentViewController:navigationController animated:YES completion: nil];
-        [self presentViewController:_quicklookPreviewController animated:YES completion:nil];
-        
-        
-        
-        //        //- (void)presentPopoverFromRect:(CGRect)rect inView:(UIView *)view permittedArrowDirections:(UIPopoverArrowDirection)arrowDirections animated:(BOOL)animated
-        //        [_popoverController presentPopoverFromRect:[[self collectionView] bounds] inView:[self collectionView] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-        // changed the presentPopoverFromRect to pull in the tableViews superview to hopefully take up the entire screen.
-//        [popoverController presentPopoverFromRect:[[[self view] superview] bounds] inView:[[self view] superview] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-        
+        [self presentViewController:_quicklookPreviewController animated:YES completion:nil];       
     }
 }
 
