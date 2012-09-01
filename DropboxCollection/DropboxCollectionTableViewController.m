@@ -25,6 +25,8 @@
 
 @implementation DropboxCollectionTableViewController
 
+#define DEBUG 1
+
 - (void) viewDidLoad {
     [super viewDidLoad];
     [[self tableView] registerNib:[UINib nibWithNibName:@"DBCTableView" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"DBMetadataCell"];
@@ -46,8 +48,10 @@
 #pragma mark - KeyValue Method
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([keyPath isEqualToString:@"filePath"]) {
+#if DEBUG
         NSLog(@"Change observed in [[DropboxModel sharedInstance] filePath]");
         NSLog(@"[[DropboxModel shareInstance] filePath] changed to : %@", [[DropboxModel sharedInstance] filePath]);
+#endif
         // somehow make this work
         // set up quicklook controller
         //[_quicklookPreviewController setDataSource:[NSURL fileURLWithPath:[[DropboxModel sharedInstance] filePath]]];
@@ -59,7 +63,9 @@
         [_quicklookPreviewController setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
         // PRESENT!
         [_quicklookPreviewController refreshCurrentPreviewItem];
+#if DEBUG
         NSLog(@"currentPreviewItem : %@", [_quicklookPreviewController currentPreviewItem]);
+#endif
     }
 }
 
