@@ -58,6 +58,9 @@
         [_quicklookPreviewController setModalPresentationStyle:UIModalPresentationPageSheet];
         [_quicklookPreviewController setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
         // PRESENT!
+        
+        [self presentViewController:_quicklookPreviewController animated:YES completion:nil];
+        NSLog(@"currentPreviewItem : %@", [_quicklookPreviewController currentPreviewItem]);
     }
 }
 
@@ -125,8 +128,10 @@
         // Set up quicklook controller and set datasource to nil before we load the item from the DropboxModel
         _quicklookPreviewController = [[QLPreviewController alloc] init];
         [_quicklookPreviewController setDataSource:nil];
-        // not sure if its a good idea or what but fuck it, trying it.q
+        
+        // not sure if its a good idea or what but fuck it, trying it.
         [[DropboxModel sharedInstance] loadFile:[selectionMetadata path] intoPath:destPath];
+                
         
         // Create the PopoverController
             // i think this might not have anything in the URL i'm loading yet, but when it is actually downloaded
@@ -140,11 +145,7 @@
             // and then once the KeyValue is observed update
             // [_dropboxQuicklookController setPreviewItemURL:] to the new
             // observed fileURLWithPath:destPath
-        
-        _dropboxQuicklookController = [[DropboxQuicklookPreviewController alloc] init];
-        [_dropboxQuicklookController setPreviewItemURL:nil];
-        //popoverController = [[UIPopoverController alloc] initWithContentViewController:_dropboxQuicklookController];
-        
+                
         /* code ripped from http://developer.apple.com/library/ios/#featuredarticles/ViewControllerPGforiPhoneOS/ModalViewControllers/ModalViewControllers.html */
 //        UINavigationController *navigationController = [[UINavigationController alloc]
 //                                                        initWithRootViewController:_quicklookPreviewController];
