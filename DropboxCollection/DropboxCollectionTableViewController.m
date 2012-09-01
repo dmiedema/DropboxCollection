@@ -130,10 +130,10 @@
         NSString * documentsDirectory = [searchPaths objectAtIndex:0];
         NSString * destPath = [NSString stringWithFormat:@"%@/%@", documentsDirectory, [selectionMetadata filename]];
         
+        _urlOfDropboxFile = nil;
+        
         // Set up quicklook controller and set datasource to nil before we load the item from the DropboxModel
         _quicklookPreviewController = [[QLPreviewController alloc] init];
-        
-        _urlOfDropboxFile = nil;
         [_quicklookPreviewController setDataSource:self];
 
         // not sure if its a good idea or what but fuck it, trying it.
