@@ -121,7 +121,7 @@
     
     if ([keyPath isEqualToString:@"filePath"]) {
         // This has been moved to CollectionViewController
-        NSLog(@"KeyValue: filePath -- change observed");
+        //NSLog(@"KeyValue: filePath -- change observed");
         /* segue */
         
 //        NSLog(@"Was told to segue");
