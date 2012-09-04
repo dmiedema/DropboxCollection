@@ -19,6 +19,6 @@
 - (void) loadFile:(NSString *)dropboxPath intoPath:(NSString *)destinationPath;
 
 @property (nonatomic, strong) NSMutableArray * activeDirectories;
-@property (nonatomic, strong) NSString * filePath;
+@property (atomic, strong) NSString * filePath;
 
 @end

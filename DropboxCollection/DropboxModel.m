@@ -66,6 +66,9 @@
 }
 
 - (void) loadFile:(NSString *)dropboxPath intoPath:(NSString *)destinationPath {
+    /* I feel like this might be part of the error */
+//    NSLog(@"\ndropboxPath: %@\n", dropboxPath);
+//    NSLog(@"\nintoPath: %@\n", destinationPath);
     [[self restClient] loadFile:dropboxPath intoPath:destinationPath];
 }
 
@@ -76,7 +79,6 @@
         _restClient = [[DBRestClient alloc] initWithSession:[DBSession sharedSession]];
         [_restClient setDelegate:self];
     }
-    
     return _restClient;
 }
 
