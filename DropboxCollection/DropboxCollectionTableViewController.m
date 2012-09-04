@@ -16,8 +16,8 @@
 @property (nonatomic, strong) DropboxQuicklookPreviewController *dropboxQuicklookController;
 @property (nonatomic, strong) NSString *urlPathOfQuicklookItemAsString;
 /* View Controller shit - Attempts and things to get this shit to work */
-@property (nonatomic, strong) QLPreviewController *quicklookPreviewController;
-@property (nonatomic, strong) NSURL *urlOfDropboxFile;
+@property (atomic, strong) QLPreviewController *quicklookPreviewController;
+@property (atomic, strong) NSURL *urlOfDropboxFile;
 
 - (NSArray *) dropboxDirectoryContents;
 
@@ -72,8 +72,9 @@
 #pragma mark - QuicklookPreviewControllerDataSource Methods
 
 - (NSInteger) numberOfPreviewItemsInPreviewController:(QLPreviewController *)controller {
-    // this is a bad idea.
-    return 1;
+    // ~this is a bad idea.~
+    // Create an NSAray with the contents of urlOfDropboxFile and just return the count.
+    return [[NSArray arrayWithContentsOfURL:_urlOfDropboxFile] count];
 }
 - (id<QLPreviewItem>) previewController:(QLPreviewController *)controller previewItemAtIndex:(NSInteger)index {
     return _urlOfDropboxFile;
@@ -135,6 +136,10 @@
         // Set up quicklook controller and set datasource to nil before we load the item from the DropboxModel
         _quicklookPreviewController = [[QLPreviewController alloc] init];
         [_quicklookPreviewController setDataSource:self];
+        
+        // modify quicklook controller appearance 
+//        [_quicklookPreviewController setModalPresentationStyle:UIModalPresentationPageSheet];
+//        [_quicklookPreviewController setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
 
         // not sure if its a good idea or what but fuck it, trying it.
         [[DropboxModel sharedInstance] loadFile:[selectionMetadata path] intoPath:destPath];
