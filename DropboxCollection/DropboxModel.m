@@ -67,8 +67,6 @@
 
 - (void) loadFile:(NSString *)dropboxPath intoPath:(NSString *)destinationPath {
     /* I feel like this might be part of the error */
-//    NSLog(@"\ndropboxPath: %@\n", dropboxPath);
-//    NSLog(@"\nintoPath: %@\n", destinationPath);
     [[self restClient] loadFile:dropboxPath intoPath:destinationPath];
 }
 
