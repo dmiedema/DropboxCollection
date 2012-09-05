@@ -16,7 +16,7 @@
 @property (nonatomic, strong) DropboxQuicklookPreviewController *dropboxQuicklookController;
 @property (nonatomic, strong) NSString *urlPathOfQuicklookItemAsString;
 /* View Controller shit - Attempts and things to get this shit to work */
-@property (atomic, strong) QLPreviewController *quicklookPreviewController;
+@property (nonatomic, strong) QLPreviewController *quicklookPreviewController;
 @property (atomic, strong) NSURL *urlOfDropboxFile;
 
 - (NSArray *) dropboxDirectoryContents;
@@ -27,6 +27,7 @@
 
 #define DEBUG 1
 
+#pragma mark - view life cycle
 - (void) viewDidLoad {
     [super viewDidLoad];
     [[self tableView] registerNib:[UINib nibWithNibName:@"DBCTableView" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"DBMetadataCell"];
@@ -36,6 +37,13 @@
                                        options:NSKeyValueObservingOptionNew
                                        context:nil];
 }
+
+- (void) viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    //[[DropboxModel sharedInstance] removeObserver:self forKeyPath:@"filePath"];
+}
+
+#pragma mark -
 
 - (NSArray *) dropboxDirectoryContents {
     return [[[DropboxModel sharedInstance] metaDataForItemAtIndex:[self indexOfCellContainingView]] contents];
@@ -47,6 +55,7 @@
 
 #pragma mark - KeyValue Method
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    
     if ([keyPath isEqualToString:@"filePath"]) {
 #if DEBUG
         NSLog(@"Change observed in [[DropboxModel sharedInstance] filePath]");
@@ -150,6 +159,13 @@
 //        [self presentViewController:navigationController animated:YES completion: nil];
         [self presentViewController:_quicklookPreviewController animated:YES completion:nil];       
     }
+}
+
+#pragma mark - dealloc
+
+- (void) dealloc {
+    [[DropboxModel sharedInstance] removeObserver:self forKeyPath:@"filePath"];
+    // [super dealloc]; causes an error
 }
 
 @end
