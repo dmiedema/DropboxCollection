@@ -19,7 +19,7 @@
 // Have a modal segue when a file is selected.  It was crashing at one point with EXC_BAD_ACCESS but now it
 // won't even crash. Nor does it observe the change or activate the segue -- and i didn't change anything.
 
-@interface DropboxCollectionViewController () <UICollectionViewDelegate, UICollectionViewDataSource, QLPreviewControllerDataSource, QLPreviewItem>
+@interface DropboxCollectionViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (nonatomic, strong) NSArray *file;
 @property (nonatomic, strong) NSMutableArray * tableViewControllers;
@@ -32,21 +32,6 @@
 
 @implementation DropboxCollectionViewController
 
-@synthesize previewItemURL = _previewItemURL;
-
-
-- (NSURL *)previewItemURL {
-    if (!_previewItemURL) {
-        _previewItemURL = [[NSURL alloc] initFileURLWithPath:[[DropboxModel sharedInstance] filePath]];
-    }
-    return _previewItemURL;
-}
-
-- (void)setPreviewItemURL:(NSURL *)newURL {
-    _previewItemURL = newURL;
-}
-
-
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 }
@@ -56,10 +41,6 @@
     [self setAutoscrolled:NO];
     [[DropboxModel sharedInstance] addObserver:self
                                     forKeyPath:@"activeDirectories"
-                                       options:NSKeyValueObservingOptionNew
-                                       context:nil];
-    [[DropboxModel sharedInstance] addObserver:self
-                                    forKeyPath:@"filePath"
                                        options:NSKeyValueObservingOptionNew
                                        context:nil];
 }
@@ -118,21 +99,6 @@
         [self setAutoscrolled:NO];
         [[self collectionView] reloadData];
     }
-    
-    if ([keyPath isEqualToString:@"filePath"]) {
-        // This has been moved to CollectionViewController
-        //NSLog(@"KeyValue: filePath -- change observed");
-        /* segue */
-        
-//        NSLog(@"Was told to segue");
-//        [self performSegueWithIdentifier:@"quicklookPopOverSegue" sender:self];
-        
-        /***************************************************/
-        /* since segue isn't working I'm thinking I'm going to manually create a UIPopoverController
-            and load the quicklook view that way. or at least figure out how to do that because
-            this whole segue thing isn't working.
-         */
-    }
 }
 
 - (NSInteger) numberOfCells {
@@ -188,28 +154,5 @@
     return NO;
 }
 
-#pragma mark -
-
-- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([[segue identifier] isEqualToString:@"quicklookPopOverSegue"]) {
-        //segue correcly.
-        NSLog(@"segue bro %@", [segue destinationViewController]);
-        
-        //[[segue destinationViewController] setDelegate:self];
-        //[[segue destinationViewController] setDataSource:[[self tableViewControllers] lastObject]];
-        [[segue destinationViewController] setPreviewItemURL:[[self file] lastObject]];
-        /*
-            Might be useful..?
-                 NSIndexPath *indexPath = nil;
-                 if ([sender isKindOfClass:[NSIndexPath class]]) {
-                     indexPath = (NSIndexPath *)sender;
-                 } else if ([sender isKindOfClass:[UITableViewCell class]]) {
-                     indexPath = [self.tableView indexPathForCell:sender];
-                 } else if (!sender || (sender == self) || (sender == self.tableView)) {
-                     indexPath = [self.tableView indexPathForSelectedRow];
-                 }
-         */
-    }
-}
 
 @end
