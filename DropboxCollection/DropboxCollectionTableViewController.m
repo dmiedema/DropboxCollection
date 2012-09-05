@@ -9,11 +9,10 @@
 #import "DropboxCollectionTableViewController.h"
 #import "DropboxModel.h"
 #import "DropboxCollectionViewController.h"
-#import "DropboxQuicklookPreviewController.h"
+#import <QuickLook/QuickLook.h>
 
 @interface DropboxCollectionTableViewController () <QLPreviewControllerDataSource>
 
-@property (nonatomic, strong) DropboxQuicklookPreviewController *dropboxQuicklookController;
 @property (nonatomic, strong) NSString *urlPathOfQuicklookItemAsString;
 /* View Controller shit - Attempts and things to get this shit to work */
 @property (nonatomic, strong) QLPreviewController *quicklookPreviewController;

@@ -9,7 +9,6 @@
 #import "DropboxCollectionViewController.h"
 #import "DropboxCollectionTableViewController.h"
 #import "DropboxModel.h"
-#import "DropboxQuicklookPreviewController.h"
 #import <QuickLook/QuickLook.h>
 
 
