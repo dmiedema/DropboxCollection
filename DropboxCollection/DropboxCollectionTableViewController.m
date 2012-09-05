@@ -124,6 +124,8 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     DBMetadata * selectionMetadata = [[self dropboxDirectoryContents] objectAtIndex:[indexPath row]];
     
+    _urlOfDropboxFile = nil;
+    
     if ([self indexOfCellContainingView] < ([[[DropboxModel sharedInstance] activeDirectories] count] - 1)) {
         [[DropboxModel sharedInstance] jumpBackToDirectoryAtIndex:[self indexOfCellContainingView]];
     }
@@ -135,7 +137,7 @@
         NSString * documentsDirectory = [searchPaths objectAtIndex:0];
         NSString * destPath = [NSString stringWithFormat:@"%@/%@", documentsDirectory, [selectionMetadata filename]];
         
-        _urlOfDropboxFile = nil;
+//        _urlOfDropboxFile = nil;
         
         // Set up quicklook controller and set datasource to nil before we load the item from the DropboxModel
         _quicklookPreviewController = [[QLPreviewController alloc] init];
