@@ -38,11 +38,6 @@
                                        context:nil];
 }
 
-- (void) viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    //[[DropboxModel sharedInstance] removeObserver:self forKeyPath:@"filePath"];
-}
-
 #pragma mark -
 
 - (NSArray *) dropboxDirectoryContents {
