@@ -14,10 +14,6 @@
 
 /* Implement ALL the protocols... just to be safe */
 
-//TODO
-// Have a modal segue when a file is selected.  It was crashing at one point with EXC_BAD_ACCESS but now it
-// won't even crash. Nor does it observe the change or activate the segue -- and i didn't change anything.
-
 @interface DropboxCollectionViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (nonatomic, strong) NSArray *file;
@@ -38,6 +34,7 @@
 - (void) viewDidLoad {
     [super viewDidLoad];
     [self setAutoscrolled:NO];
+    //[[[self view] superview] setMultipleTouchEnabled:NO];
     [[DropboxModel sharedInstance] addObserver:self
                                     forKeyPath:@"activeDirectories"
                                        options:NSKeyValueObservingOptionNew
@@ -51,15 +48,22 @@
 - (void) addDropboxTableViewController:(UITableViewController *)viewController {
     [[self tableViewControllers] addObject:viewController];
     [self addChildViewController:viewController];
-
 }
 
 - (void) clearExistingDirectories {
-    for (int i = [[self tableViewControllers] count] - 1; i >= 0; i--) {
-        UIViewController * viewController = [[self tableViewControllers] lastObject];
-        [viewController removeFromParentViewController];
-        [[self tableViewControllers] removeLastObject];
-    }
+    // UIGestureRecognizer *gestureRecognizer = [[UIGestureRecognizer alloc] initWithTarget:self action:nil];
+    // NSLog(@"number of touches %i", [gestureRecognizer numberOfTouches]);
+    /* Potentially loop over touches on screen and see if
+        any of the touches are in a table view about to be removed.
+        if they are, could just busy wait until the touch is done.
+     */
+    //if ([gestureRecognizer numberOfTouches] < 2) {
+        for (int i = [[self tableViewControllers] count] - 1; i >= 0; i--) {
+            UIViewController * viewController = [[self tableViewControllers] lastObject];
+            [viewController removeFromParentViewController];
+            [[self tableViewControllers] removeLastObject];
+        }
+    //}
 }
 
 - (void) animateScrollingToIndexPath:(NSIndexPath *)indexPath {

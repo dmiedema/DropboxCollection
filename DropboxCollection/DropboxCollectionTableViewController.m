@@ -122,13 +122,12 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     DBMetadata * selectionMetadata = [[self dropboxDirectoryContents] objectAtIndex:[indexPath row]];
-    
+        
     _urlOfDropboxFile = nil;
     
     if ([self indexOfCellContainingView] < ([[[DropboxModel sharedInstance] activeDirectories] count] - 1)) {
         [[DropboxModel sharedInstance] jumpBackToDirectoryAtIndex:[self indexOfCellContainingView]];
-    }
-    
+    }    
     if (selectionMetadata.isDirectory) {
         [[DropboxModel sharedInstance] loadMetadataForPath:[selectionMetadata path]];
     } else {
