@@ -34,7 +34,6 @@
 - (void) viewDidLoad {
     [super viewDidLoad];
     [self setAutoscrolled:NO];
-    //[[[self view] superview] setMultipleTouchEnabled:NO];
     [[DropboxModel sharedInstance] addObserver:self
                                     forKeyPath:@"activeDirectories"
                                        options:NSKeyValueObservingOptionNew

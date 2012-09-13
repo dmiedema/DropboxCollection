@@ -144,9 +144,9 @@
 				BEBAEF2F15DB5B41000E64AB /* DropboxModel.m */,
 				C339FA8615DBF0C500789506 /* DropboxCollectionViewController.h */,
 				C339FA8715DBF0C500789506 /* DropboxCollectionViewController.m */,
-				C3DC503C15E4A8C300D03C59 /* Quicklook notes shit.rtf */,
 				C339FA8E15DC06C700789506 /* DropboxCollectionTableViewController.h */,
 				C339FA8F15DC06C700789506 /* DropboxCollectionTableViewController.m */,
+				C3DC503C15E4A8C300D03C59 /* Quicklook notes shit.rtf */,
 				BEBAEF0415DB527D000E64AB /* Supporting Files */,
 			);
 			path = DropboxCollection;
@@ -398,6 +398,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 2;
+				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -415,6 +416,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 2;
+				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
