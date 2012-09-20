@@ -23,7 +23,6 @@
 		BEBAEF3215DB5B8C000E64AB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEBAEF3115DB5B8C000E64AB /* Security.framework */; };
 		BEBAEF3415DB5B92000E64AB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEBAEF3315DB5B92000E64AB /* QuartzCore.framework */; };
 		BEBAEF3615DB5B98000E64AB /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEBAEF3515DB5B98000E64AB /* QuickLook.framework */; };
-		BEBAEF3815DB5BAA000E64AB /* DropboxSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEBAEF3715DB5BAA000E64AB /* DropboxSDK.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		BEEB421015DECAED00D81E04 /* DBCTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEEB420F15DECAED00D81E04 /* DBCTableView.xib */; };
 		C339FA8815DBF0C500789506 /* DropboxCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C339FA8715DBF0C500789506 /* DropboxCollectionViewController.m */; };
 		C339FA9015DC06C700789506 /* DropboxCollectionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C339FA8F15DC06C700789506 /* DropboxCollectionTableViewController.m */; };
@@ -64,7 +63,6 @@
 		BEBAEF3115DB5B8C000E64AB /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		BEBAEF3315DB5B92000E64AB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BEBAEF3515DB5B98000E64AB /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
-		BEBAEF3715DB5BAA000E64AB /* DropboxSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DropboxSDK.framework; path = "dropbox-ios-sdk-1.2.3/DropboxSDK.framework"; sourceTree = "<group>"; };
 		BEEB420F15DECAED00D81E04 /* DBCTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DBCTableView.xib; sourceTree = "<group>"; };
 		C339FA8615DBF0C500789506 /* DropboxCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropboxCollectionViewController.h; sourceTree = "<group>"; };
 		C339FA8715DBF0C500789506 /* DropboxCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropboxCollectionViewController.m; sourceTree = "<group>"; };
@@ -79,7 +77,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BEBAEF3815DB5BAA000E64AB /* DropboxSDK.framework in Frameworks */,
 				BEBAEF3615DB5B98000E64AB /* QuickLook.framework in Frameworks */,
 				BEBAEF3415DB5B92000E64AB /* QuartzCore.framework in Frameworks */,
 				BEBAEF3215DB5B8C000E64AB /* Security.framework in Frameworks */,
@@ -126,7 +123,6 @@
 			isa = PBXGroup;
 			children = (
 				C359C46C160B8C75002F0F1C /* DropboxSDK.framework */,
-				BEBAEF3715DB5BAA000E64AB /* DropboxSDK.framework */,
 				BEBAEF3515DB5B98000E64AB /* QuickLook.framework */,
 				BEBAEF3315DB5B92000E64AB /* QuartzCore.framework */,
 				BEBAEF3115DB5B8C000E64AB /* Security.framework */,
@@ -403,7 +399,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 2;
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -422,7 +418,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 2;
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
