@@ -125,6 +125,7 @@
     UICollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseID forIndexPath:indexPath];
     [cell addSubview:[[[self tableViewControllers] objectAtIndex:[indexPath row]] view]];
     
+    NSLog(@"Autscrolled %i", [self autoscrolled]);
     if (![self autoscrolled]) {
         [self animateScrollingToIndexPath:indexPath];
     }

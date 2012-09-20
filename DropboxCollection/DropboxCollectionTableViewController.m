@@ -125,11 +125,32 @@
         
     _urlOfDropboxFile = nil;
     
-    if ([self indexOfCellContainingView] < ([[[DropboxModel sharedInstance] activeDirectories] count] - 1)) {
+//    if ([self indexOfCellContainingView] < ([[[DropboxModel sharedInstance] activeDirectories] count] - 1)) {
+//        [[DropboxModel sharedInstance] jumpBackToDirectoryAtIndex:[self indexOfCellContainingView]];
+//    }    
+    if (selectionMetadata.isDirectory && [self indexOfCellContainingView] < ([[[DropboxModel sharedInstance] activeDirectories] count] - 1)) {
         [[DropboxModel sharedInstance] jumpBackToDirectoryAtIndex:[self indexOfCellContainingView]];
-    }    
-    if (selectionMetadata.isDirectory) {
         [[DropboxModel sharedInstance] loadMetadataForPath:[selectionMetadata path]];
+    } else if (selectionMetadata.isDirectory) {
+        [[DropboxModel sharedInstance] loadMetadataForPath:[selectionMetadata path]];
+    } else if ([self indexOfCellContainingView] < ([[[DropboxModel sharedInstance] activeDirectories] count] -1)) {
+        NSLog(@"##########  Index of cell containing view is < total number of cells being shown ###########");
+        NSArray * searchPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString * documentsDirectory = [searchPaths objectAtIndex:0];
+        NSString * destPath = [NSString stringWithFormat:@"%@/%@", documentsDirectory, [selectionMetadata filename]];
+        
+        _quicklookPreviewController = [[QLPreviewController alloc] init];
+        [_quicklookPreviewController setDataSource:self];
+        
+        [[DropboxModel sharedInstance] loadFile:[selectionMetadata path] intoPath:destPath];
+        
+        NSLog(@"Index of cellContinaningView: %i & activeDirectories count-1: %i", [self indexOfCellContainingView], [[[DropboxModel sharedInstance] activeDirectories] count] -1);
+        
+        [[DropboxModel sharedInstance] jumpBackToDirectoryAtIndex:[self indexOfCellContainingView]];
+
+        [self presentViewController:_quicklookPreviewController animated:YES completion:nil];
+        
+        // clear all other collection view cells off the screen to avoid crashing
     } else {
         NSArray * searchPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString * documentsDirectory = [searchPaths objectAtIndex:0];
