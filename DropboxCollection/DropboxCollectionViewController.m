@@ -92,9 +92,15 @@
         
         for (DBMetadata * metadata in [[DropboxModel sharedInstance] activeDirectories]) {
             DropboxCollectionTableViewController * viewController = [[DropboxCollectionTableViewController alloc] init];
-            
-            if (UIUserInterfaceIdiomPad) { [[viewController view] setFrame:CGRectMake(0, 0, 335, 700)]; }
-            else [[viewController view] setFrame:CGRectMake(0, 0, 300, 400)];
+
+            if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+                [[viewController view] setFrame:CGRectMake(0, 0, 335, 700)];
+                NSLog(@"Shits an iPad, fucker.");
+            }
+            else {
+                [[viewController view] setFrame:CGRectMake(0, 0, 300, 400)];
+                NSLog(@"if its not an iPad what the fuck do you think it is...?");
+            }
             
             //[[viewController view] setBackgroundColor:[UIColor clearColor]];
             [viewController setIndexOfCellContainingView:index];

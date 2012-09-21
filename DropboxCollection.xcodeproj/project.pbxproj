@@ -18,7 +18,7 @@
 		BEBAEF1815DB527D000E64AB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEBAEEFF15DB527D000E64AB /* Foundation.framework */; };
 		BEBAEF2015DB527D000E64AB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BEBAEF1E15DB527D000E64AB /* InfoPlist.strings */; };
 		BEBAEF2315DB527D000E64AB /* DropboxCollectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBAEF2215DB527D000E64AB /* DropboxCollectionTests.m */; };
-		BEBAEF2D15DB556D000E64AB /* main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEBAEF2C15DB556D000E64AB /* main.storyboard */; };
+		BEBAEF2D15DB556D000E64AB /* iPad Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEBAEF2C15DB556D000E64AB /* iPad Storyboard.storyboard */; };
 		BEBAEF3015DB5B41000E64AB /* DropboxModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBAEF2F15DB5B41000E64AB /* DropboxModel.m */; };
 		BEBAEF3215DB5B8C000E64AB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEBAEF3115DB5B8C000E64AB /* Security.framework */; };
 		BEBAEF3415DB5B92000E64AB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEBAEF3315DB5B92000E64AB /* QuartzCore.framework */; };
@@ -28,6 +28,7 @@
 		C339FA9015DC06C700789506 /* DropboxCollectionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C339FA8F15DC06C700789506 /* DropboxCollectionTableViewController.m */; };
 		C359C46D160B8C75002F0F1C /* DropboxSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C359C46C160B8C75002F0F1C /* DropboxSDK.framework */; };
 		C359C46F160BF34F002F0F1C /* iPhone Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C359C46E160BF34F002F0F1C /* iPhone Storyboard.storyboard */; };
+		C359C471160BFC93002F0F1C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C359C470160BFC93002F0F1C /* Default-568h@2x.png */; };
 		C3DC503D15E4A8C300D03C59 /* Quicklook notes shit.rtf in Resources */ = {isa = PBXBuildFile; fileRef = C3DC503C15E4A8C300D03C59 /* Quicklook notes shit.rtf */; };
 /* End PBXBuildFile section */
 
@@ -58,7 +59,7 @@
 		BEBAEF1F15DB527D000E64AB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BEBAEF2115DB527D000E64AB /* DropboxCollectionTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DropboxCollectionTests.h; sourceTree = "<group>"; };
 		BEBAEF2215DB527D000E64AB /* DropboxCollectionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DropboxCollectionTests.m; sourceTree = "<group>"; };
-		BEBAEF2C15DB556D000E64AB /* main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = main.storyboard; sourceTree = "<group>"; };
+		BEBAEF2C15DB556D000E64AB /* iPad Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "iPad Storyboard.storyboard"; sourceTree = "<group>"; };
 		BEBAEF2E15DB5B41000E64AB /* DropboxModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropboxModel.h; sourceTree = "<group>"; };
 		BEBAEF2F15DB5B41000E64AB /* DropboxModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropboxModel.m; sourceTree = "<group>"; };
 		BEBAEF3115DB5B8C000E64AB /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -71,6 +72,7 @@
 		C339FA8F15DC06C700789506 /* DropboxCollectionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropboxCollectionTableViewController.m; sourceTree = "<group>"; };
 		C359C46C160B8C75002F0F1C /* DropboxSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DropboxSDK.framework; path = "dropbox-ios-sdk-1.3.2-ios6/DropboxSDK.framework"; sourceTree = "<group>"; };
 		C359C46E160BF34F002F0F1C /* iPhone Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "iPhone Storyboard.storyboard"; sourceTree = "<group>"; };
+		C359C470160BFC93002F0F1C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		C3DC503C15E4A8C300D03C59 /* Quicklook notes shit.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "Quicklook notes shit.rtf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -141,7 +143,7 @@
 			children = (
 				BEBAEF0C15DB527D000E64AB /* AppDelegate.h */,
 				BEBAEF0D15DB527D000E64AB /* AppDelegate.m */,
-				BEBAEF2C15DB556D000E64AB /* main.storyboard */,
+				BEBAEF2C15DB556D000E64AB /* iPad Storyboard.storyboard */,
 				C359C46E160BF34F002F0F1C /* iPhone Storyboard.storyboard */,
 				BEBAEF2E15DB5B41000E64AB /* DropboxModel.h */,
 				BEBAEF2F15DB5B41000E64AB /* DropboxModel.m */,
@@ -158,6 +160,7 @@
 		BEBAEF0415DB527D000E64AB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C359C470160BFC93002F0F1C /* Default-568h@2x.png */,
 				BEEB420F15DECAED00D81E04 /* DBCTableView.xib */,
 				BEBAEF0515DB527D000E64AB /* DropboxCollection-Info.plist */,
 				BEBAEF0615DB527D000E64AB /* InfoPlist.strings */,
@@ -258,10 +261,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEBAEF0815DB527D000E64AB /* InfoPlist.strings in Resources */,
-				BEBAEF2D15DB556D000E64AB /* main.storyboard in Resources */,
+				BEBAEF2D15DB556D000E64AB /* iPad Storyboard.storyboard in Resources */,
 				BEEB421015DECAED00D81E04 /* DBCTableView.xib in Resources */,
 				C3DC503D15E4A8C300D03C59 /* Quicklook notes shit.rtf in Resources */,
 				C359C46F160BF34F002F0F1C /* iPhone Storyboard.storyboard in Resources */,
+				C359C471160BFC93002F0F1C /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,7 +405,9 @@
 				GCC_PREFIX_HEADER = "DropboxCollection/DropboxCollection-Prefix.pch";
 				INFOPLIST_FILE = "DropboxCollection/DropboxCollection-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
@@ -420,7 +426,9 @@
 				GCC_PREFIX_HEADER = "DropboxCollection/DropboxCollection-Prefix.pch";
 				INFOPLIST_FILE = "DropboxCollection/DropboxCollection-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;

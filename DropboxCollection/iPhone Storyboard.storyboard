@@ -26,6 +26,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <size key="customSize" width="300" height="400"/>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -33,6 +34,7 @@
                             <outlet property="delegate" destination="uGK-NF-053" id="nS4-98-iJX"/>
                         </connections>
                     </collectionView>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Plj-HI-d7d" userLabel="First Responder" sceneMemberID="firstResponder"/>
