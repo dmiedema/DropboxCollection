@@ -92,7 +92,10 @@
         
         for (DBMetadata * metadata in [[DropboxModel sharedInstance] activeDirectories]) {
             DropboxCollectionTableViewController * viewController = [[DropboxCollectionTableViewController alloc] init];
-            [[viewController view] setFrame:CGRectMake(0, 0, 335, 700)];
+            
+            if (UIUserInterfaceIdiomPad) { [[viewController view] setFrame:CGRectMake(0, 0, 335, 700)]; }
+            else [[viewController view] setFrame:CGRectMake(0, 0, 300, 400)];
+            
             //[[viewController view] setBackgroundColor:[UIColor clearColor]];
             [viewController setIndexOfCellContainingView:index];
             [self addDropboxTableViewController:viewController];
