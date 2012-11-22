@@ -28,7 +28,7 @@ Example, if your app key is `abc123` you would put `<string>db-abc123</string>`.
 ##Known Bugs
 
 * Selecting items from two tables at a time will probably crash the app.
-* Opening some folders, selecting an item to the left, then selecting an item to the right will crash the app too.
+* Opening some folders, selecting an item to the left, then selecting an item to the right before the update from Dropbox completes will crash the app too.
 
 Created by Ryan Mullins (@RyanMullins) and Daniel Miedema (@SomeWhores) at Cocoa Camp 2012.
 
