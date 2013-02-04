@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-#define DB_APP_KEY @"XXXXXX"
-#define DB_APP_SECRET @"XXXXXX"
+#define DB_APP_KEY @"am1b7b0nkux3g30"
+#define DB_APP_SECRET @"opp3cb7tfaacuut"
 
 @interface DropboxAPIKey : NSObject
 
