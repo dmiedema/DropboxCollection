@@ -21,7 +21,7 @@
     DBSession * session = [[DBSession alloc] initWithAppKey:DB_APP_KEY appSecret:DB_APP_SECRET root:kDBRootDropbox];
     [DBSession setSharedSession:session];
     
-    UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"main" bundle:nil];
+    UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"iPad Storyboard" bundle:nil];
     UIViewController * root = [storyboard instantiateInitialViewController];
     
     if (![[DBSession sharedSession] isLinked]) {

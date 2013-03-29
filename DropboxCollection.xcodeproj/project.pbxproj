@@ -26,7 +26,7 @@
 		BEEB421015DECAED00D81E04 /* DBCTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEEB420F15DECAED00D81E04 /* DBCTableView.xib */; };
 		C339FA8815DBF0C500789506 /* DropboxCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C339FA8715DBF0C500789506 /* DropboxCollectionViewController.m */; };
 		C339FA9015DC06C700789506 /* DropboxCollectionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C339FA8F15DC06C700789506 /* DropboxCollectionTableViewController.m */; };
-		C359C46D160B8C75002F0F1C /* DropboxSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C359C46C160B8C75002F0F1C /* DropboxSDK.framework */; };
+		C34D5FBF16CC18E0004643FE /* DropboxSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C34D5FBE16CC18E0004643FE /* DropboxSDK.framework */; };
 		C359C46F160BF34F002F0F1C /* iPhone Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C359C46E160BF34F002F0F1C /* iPhone Storyboard.storyboard */; };
 		C359C471160BFC93002F0F1C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C359C470160BFC93002F0F1C /* Default-568h@2x.png */; };
 		C3DC503D15E4A8C300D03C59 /* Quicklook notes shit.rtf in Resources */ = {isa = PBXBuildFile; fileRef = C3DC503C15E4A8C300D03C59 /* Quicklook notes shit.rtf */; };
@@ -70,7 +70,7 @@
 		C339FA8715DBF0C500789506 /* DropboxCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropboxCollectionViewController.m; sourceTree = "<group>"; };
 		C339FA8E15DC06C700789506 /* DropboxCollectionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropboxCollectionTableViewController.h; sourceTree = "<group>"; };
 		C339FA8F15DC06C700789506 /* DropboxCollectionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropboxCollectionTableViewController.m; sourceTree = "<group>"; };
-		C359C46C160B8C75002F0F1C /* DropboxSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DropboxSDK.framework; path = "dropbox-ios-sdk-1.3.2-ios6/DropboxSDK.framework"; sourceTree = "<group>"; };
+		C34D5FBE16CC18E0004643FE /* DropboxSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DropboxSDK.framework; sourceTree = "<group>"; };
 		C359C46E160BF34F002F0F1C /* iPhone Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "iPhone Storyboard.storyboard"; sourceTree = "<group>"; };
 		C359C470160BFC93002F0F1C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		C3DC503C15E4A8C300D03C59 /* Quicklook notes shit.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "Quicklook notes shit.rtf"; sourceTree = "<group>"; };
@@ -87,7 +87,7 @@
 				BEBAEEFE15DB527D000E64AB /* UIKit.framework in Frameworks */,
 				BEBAEF0015DB527D000E64AB /* Foundation.framework in Frameworks */,
 				BEBAEF0215DB527D000E64AB /* CoreGraphics.framework in Frameworks */,
-				C359C46D160B8C75002F0F1C /* DropboxSDK.framework in Frameworks */,
+				C34D5FBF16CC18E0004643FE /* DropboxSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,7 +126,7 @@
 		BEBAEEFC15DB527D000E64AB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C359C46C160B8C75002F0F1C /* DropboxSDK.framework */,
+				C34D5FBE16CC18E0004643FE /* DropboxSDK.framework */,
 				BEBAEF3515DB5B98000E64AB /* QuickLook.framework */,
 				BEBAEF3315DB5B92000E64AB /* QuartzCore.framework */,
 				BEBAEF3115DB5B8C000E64AB /* Security.framework */,
@@ -400,6 +400,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/dropbox-ios-sdk-1.2.3\"",
 					"\"$(SRCROOT)/dropbox-ios-sdk-1.3.2-ios6\"",
+					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DropboxCollection/DropboxCollection-Prefix.pch";
@@ -409,7 +410,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = "armv7, armv7s";
+				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -421,6 +422,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/dropbox-ios-sdk-1.2.3\"",
 					"\"$(SRCROOT)/dropbox-ios-sdk-1.3.2-ios6\"",
+					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DropboxCollection/DropboxCollection-Prefix.pch";
@@ -430,7 +432,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = "armv7, armv7s";
+				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
